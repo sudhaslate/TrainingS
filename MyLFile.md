@@ -8,8 +8,8 @@ Git Commands:
 
  git add .---will track any changes
 
- git commit -m "Changes" ---will commit the changes to the local directory
+ git commit -m "Changes" ---will commit the changes to the local repository
 
- git push  ---will push the changes to the repository
+ git push  ---will push the changes to remote repository
 
- 
+ git diff  ---will tell you the difference from the last commit
