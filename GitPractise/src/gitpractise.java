@@ -4,5 +4,9 @@ public class gitpractise {
 
         int a=33; int b= 34;
         System.out.println("Product of a&b =" + (a*b));
+
+        int m=33; int v= 34;
+        System.out.println("Product of v,m =" + (v*m));
+
     }
 }
