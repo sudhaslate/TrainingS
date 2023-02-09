@@ -1,5 +1,6 @@
 package keywordthis;
-
+//change the definition
+//can be achieved without inheritance
 public class MethodOverLoading {
   void add(int a, int b){               //1 method with parameters as int, int
       System.out.println(a+b);
