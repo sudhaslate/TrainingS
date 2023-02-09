@@ -23,7 +23,7 @@ public class Hierarchy {
         c1.display();
         c1.show();
 
-        Child2 c2= new Child2();
+       Child2 c2= new Child2();
         c2.a=12;
         c2.y=23;
         c2.display();
