@@ -10,7 +10,7 @@ public class CheckedExceptions {
            }
        catch(InterruptedException e)
        {
-           }*/
+           }*/ //
         Thread.sleep(500);
 
         System.out.println("Program completed");

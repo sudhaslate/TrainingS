@@ -21,7 +21,7 @@ public class ExceptionhandlingEx {
           {statements;}   */
 
 
-      /*  try
+      /* * try
         {
             System.out.println(a/0);//Throws exception -- Arithmetic exception
         }

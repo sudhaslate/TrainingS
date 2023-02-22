@@ -14,7 +14,7 @@ public class ExceptionExamples {
         String x="abc";
         //int i=Integer.parseInt(x); //Number format exception
 
-     //   int arr[]=new int[5];
+     //.   int arr[]=new int[5];
        // arr[10]=100;   //ArrayIndexOut of Bounds Exception
 
             System.out.println("I like going out");
