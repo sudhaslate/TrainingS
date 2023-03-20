@@ -35,7 +35,6 @@ Feature: Validating the login functionality of SOLAR TEST COMPANY
       |super_admin@gmail.com|           |
 
 
-  @PositiveTest
   Scenario Outline:Validating the login functionality with "Valid Credentials"
     Given User is on the Home page of Solar Test Company
     When Enter the "<EmailId>" as EmailId
@@ -43,17 +42,30 @@ Feature: Validating the login functionality of SOLAR TEST COMPANY
     And Click on the SignIn Button
     Then User should see be able to launch on company page
 Examples:
-  | EmailId             |  Password|
-  |super_admin@gmail.com|  secret  |
+  | EmailId                 |  Password |  RoleId      |
+  |super_admin@gmail.com    |  secret   |  Super Admin |
+  |admin23@gmail.com        |  secret   |  Administrator|
+  |receptionist23@gmail.com |  secret   |  Receptionist |
+  |sales_rep23@gmail.com    |  secret   |  Sales Rep    |
+  |installer23@gmail.com    |  secret   |  Installer    |
 
-
-  Scenario: Validating the login into the "Solar Test Company Page"
+    @PositiveTest
+  Scenario Outline: Validating the login into the "Solar Test Company Page"
+    Given User is on the Home page of Solar Test Company
+    When Enter the "<EmailId>" as EmailId
+    And Enter "<Password>" as Password
+    And Click on the SignIn Button
+    Then User should see be able to launch on company page
     And Select the company SolarTestCompany from dropdown
     And Click on confirm button
     Then User should be able to launch on main company page
 
+    Examples:
+      | EmailId                 |  Password |  RoleId      |
+      |super_admin@gmail.com    |  secret   |  Super Admin |
 
-@SmokeTest
+
+  @SmokeTest
    Scenario Outline: Validating the "Forgot Password Option"
       Given User is on the Home page of Solar Test Company
       When Enter the "<EmailId>" as EmailId

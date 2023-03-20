@@ -13,37 +13,31 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import sun.security.util.Password;
 
-public class Code {
-    public static WebDriver driver;
+public class Code extends CommonFunc {
 
+    PFM pm=new PFM(driver);
     @Given("^User is on the Home page of Solar Test Company$")
-    public void user_is_on_the_Home_page_of_Solar_Test_Company() throws InterruptedException {
-        WebDriverManager.chromiumdriver().setup();
-        driver = new ChromeDriver();
-        driver.get("http://solar.schoolnewgen.com/websolar/login");
-        Thread.sleep(1000);
-        driver.manage().window().maximize();
+    public void user_is_on_the_Home_page_of_Solar_Test_Company()  {
     }
     @When("^Enter the \"([^\"]*)\" as EmailId$")
-    public void enterTheAsEmailId(String EmailId){
-        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(EmailId);
+    public void enterTheAsEmailId(String EmailId) throws InterruptedException {
+        pm.getEmail(EmailId);
     }
     @And("^Enter \"([^\"]*)\" as Password$")
-    public void enterAsPassword(String Password)  {
-        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(Password);
+    public void enterAsPassword(String Password) throws InterruptedException {
+        pm.getPassword(Password);
     }
     @When("^Click on the SignIn Button$")
     public void click_on_the_SignIn_Button() {
-        driver.findElement(By.xpath("/html/body/div/div[2]/div/form/div[3]/div[2]/button")).click();
     }
     @Then("^User should see Login failed\\. Please try again$")
     public void userShouldSeeLoginFailedPleaseTryAgain()  {
-        driver.findElement(By.xpath("/html/body/div/div[2]/div/div")).getText();
     }
     @Then("^User should see The email field is required\\.$")
     public void userShouldSeeTheEmailFieldIsRequired() {
-        driver.findElement(By.xpath("//*[@id=\"email-error\"]")).getText();
+        driver.findElement(By.id("id=\"email-error\"")).getText();
     }
     @Then("^User should see The password field is required\\.$")
     public void userShouldSeeThePasswordFieldIsRequired() {
@@ -64,8 +58,9 @@ public class Code {
         driver.findElement(By.xpath("//*[@id=\"companiesModal\"]/div/div/div/form/button")).click();
     }
     @Then("^User should be able to launch on main company page$")
-    public void userShouldBeAbleToLaunchOnMainCompanyPage() {
+    public void userShouldBeAbleToLaunchOnMainCompanyPage() throws InterruptedException {
         driver.findElement(By.xpath("/html/body/div[1]/aside/div/div[4]/div/div/div")).getText();
+        Thread.sleep(5000);
     }
     @And("^User clicks on I Forgot My Password$")
     public void userClicksOnIForgotMyPassword() {
@@ -95,29 +90,6 @@ public class Code {
     public void userShouldSeeSignInToStartYourSessionPage() {
         driver.findElement(By.xpath("/html/body/div/div[2]/div/p[1]")).getText();
     }
-    @And("^User should tick the Remember Me Box$")
-    public void userShouldTickTheRememberMeBox() {
-        driver.findElement(By.xpath("/html/body/div/div[2]/div/form/div[3]/div[1]/div/label")).click();
-    }
-    @And("^User closes the web page$")
-    public void userClosesTheWebPage() {
-        driver.close();
-    }
-    @And("^User re-opens the web page,$")
-    public void userReOpensTheWebPage() {
-        WebDriverManager.chromiumdriver().setup();
-        driver = new ChromeDriver();
-        driver.get("http://solar.schoolnewgen.com/websolar/login");
-        driver.manage().window().maximize();
-    }
-    @Then("^Use should be able to launch the company page$")
-    public void useShouldBeAbleToLaunchTheCompanyPage() {
-        driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div/div[1]/h1")).getText();
-
-    String actualResult =driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div/div[1]/h1")).getText();
-    String expectedResult = "Dashboard";
-    Assert.assertEquals(actualResult, expectedResult);
-    driver.close();
-    }
 
 }
+
