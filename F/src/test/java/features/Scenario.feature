@@ -1,6 +1,6 @@
 Feature: Validating the login functionality of SOLAR TEST COMPANY
 
-  @NegativeTest
+
   Scenario Outline: Validating the login functionality with "Invalid Credentials"
     Given User is on the Home page of Solar Test Company
     When Enter the "<EmailId>" as EmailId
@@ -12,7 +12,7 @@ Feature: Validating the login functionality of SOLAR TEST COMPANY
    |super_admin@gmail.com|  srect    |
    |super_admin@gmail.com| 1234@£$   |
 
-
+  @NegativeTest
   Scenario Outline: Validating the login functionality with "Invalid Credentials-Empty Username"
     Given User is on the Home page of Solar Test Company
     When Enter the "<EmailId>" as EmailId
@@ -23,7 +23,7 @@ Feature: Validating the login functionality of SOLAR TEST COMPANY
       | EmailId             |  Password |
       |                     |  secret   |
 
-
+  @NegativeTest
   Scenario Outline: Validating the login functionality with "Invalid Credentials-Empty Password"
     Given User is on the Home page of Solar Test Company
     When Enter the "<EmailId>" as EmailId
@@ -34,7 +34,7 @@ Feature: Validating the login functionality of SOLAR TEST COMPANY
       | EmailId             |  Password |
       |super_admin@gmail.com|           |
 
-
+  @PositiveTest
   Scenario Outline:Validating the login functionality with "Valid Credentials"
     Given User is on the Home page of Solar Test Company
     When Enter the "<EmailId>" as EmailId
@@ -49,7 +49,7 @@ Examples:
   |sales_rep23@gmail.com    |  secret   |  Sales Rep    |
   |installer23@gmail.com    |  secret   |  Installer    |
 
-    @PositiveTest
+  @PositiveTest
   Scenario Outline: Validating the login into the "Solar Test Company Page"
     Given User is on the Home page of Solar Test Company
     When Enter the "<EmailId>" as EmailId
@@ -59,7 +59,6 @@ Examples:
     And Select the company SolarTestCompany from dropdown
     And Click on confirm button
     Then User should be able to launch on main company page
-
     Examples:
       | EmailId                 |  Password |  RoleId      |
       |super_admin@gmail.com    |  secret   |  Super Admin |
@@ -75,7 +74,7 @@ Examples:
         | EmailId             |
         |super_admin@gmail.com|
 
-
+  @SmokeTest
   Scenario Outline: Validating the "Send Password Reset Link Option"
     Given User is on the Home page of Solar Test Company
     When Enter the "<EmailId>" as EmailId

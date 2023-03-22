@@ -30,65 +30,68 @@ public class Code extends CommonFunc {
         pm.getPassword(Password);
     }
     @When("^Click on the SignIn Button$")
-    public void click_on_the_SignIn_Button() {
+    public void click_on_the_SignIn_Button()  {
+        pm.clickSingInBtn();
     }
     @Then("^User should see Login failed\\. Please try again$")
     public void userShouldSeeLoginFailedPleaseTryAgain()  {
+
+        pm.getMainPage();
     }
     @Then("^User should see The email field is required\\.$")
     public void userShouldSeeTheEmailFieldIsRequired() {
-        driver.findElement(By.id("id=\"email-error\"")).getText();
+        pm.getEmailErrorMsg();
     }
     @Then("^User should see The password field is required\\.$")
     public void userShouldSeeThePasswordFieldIsRequired() {
-        driver.findElement(By.xpath("//*[@id=\"password-error\"]")).getText();
+        pm.getPwdErrorMsg();
     }
     @Then("^User should see be able to launch on company page$")
-    public void userShouldSeeBeAbleToLaunchOnCompanyPage() {
-   driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div/div[1]/h1")).getText();
+    public void userShouldSeeBeAbleToLaunchOnCompanyPage() throws InterruptedException {
+        pm.getDashBoard();
     }
     @When("^Select the company SolarTestCompany from dropdown$")
     public void select_the_company_SolarTestCompany_from_dropdown() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement dropdownOption = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"companiesModal\"]/div/div/div/form/div/select/option[5]")));
         dropdownOption.click();
+        pm.clickDropDownBtn();
     }
     @When("^Click on confirm button$")
     public void click_on_confirm_button() {
-        driver.findElement(By.xpath("//*[@id=\"companiesModal\"]/div/div/div/form/button")).click();
+        pm.clickConfirmBtn();
     }
     @Then("^User should be able to launch on main company page$")
     public void userShouldBeAbleToLaunchOnMainCompanyPage() throws InterruptedException {
-        driver.findElement(By.xpath("/html/body/div[1]/aside/div/div[4]/div/div/div")).getText();
-        Thread.sleep(5000);
+        pm.getSuperAdmin();
     }
     @And("^User clicks on I Forgot My Password$")
     public void userClicksOnIForgotMyPassword() {
-        driver.findElement(By.xpath("/html/body/div/div[2]/div/p[2]/a")).click();
+        pm.clickForgotPwd();
     }
     @Then("^User should see Give the email that is registered with us\\. We will send a password reset link\\.$")
     public void userShouldSeeGiveTheEmailThatIsRegisteredWithUsWeWillSendAPasswordResetLink() {
-        driver.findElement(By.xpath("/html/body/div/div[2]/div/p[1]")).getText();
+        pm.getEmailPwdLink();
     }
     @And("^User enters the \"([^\"]*)\" for reset link to be sent$")
-    public void userEntersTheForResetLinkToBeSent(String EmailId) {
-        driver.findElement(By.xpath("//input[@id='email']")).sendKeys(EmailId);
+    public void userEntersTheForResetLinkToBeSent(String EmailId) throws InterruptedException {
+        pm.getPwdEmailBox(EmailId);
     }
     @And("^User clicks on send password reset link$")
     public void userClicksOnSendPasswordResetLink() {
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        pm.clickSendPwdLink();
     }
     @Then("^User should see the email sent across page$")
     public void userShouldSeeTheEmailSentAcrossPage() {
-        driver.findElement(By.xpath("/html/body/div/div[2]/div/form")).getText();
+        pm.getemailSentAcross();
     }
     @And("^User clicks on Sign In on send password reset link page$")
     public void userClicksOnSignInOnSendPasswordResetLinkPage() {
-        driver.findElement(By.xpath("/html/body/div/div[2]/div/p[2]/a")).click();
+        pm.clickSignInPwdSentAcross();
     }
     @Then("^User should see Sign in to start your session page$")
     public void userShouldSeeSignInToStartYourSessionPage() {
-        driver.findElement(By.xpath("/html/body/div/div[2]/div/p[1]")).getText();
+    pm.getstartSessionPg();
     }
 
 }
