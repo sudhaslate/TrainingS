@@ -1,5 +1,4 @@
 package steps;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -47,19 +46,16 @@ public class PFM {
     private WebElement startSessionPg;
 
 
-
     private WebDriver driver;
     public PFM(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);}
 
 
-
-
     public void getEmail(String EmailId) throws InterruptedException {emailTxtBox.sendKeys(EmailId);
-        Thread.sleep(3000);}
+        Thread.sleep(2000);}
     public void getPassword (String Password) throws InterruptedException {passwordTxtBox.sendKeys(Password);
-        Thread.sleep(5000);}
+        Thread.sleep(2000);}
     public void clickSingInBtn() {
             signInBtn.click();
     }

@@ -35,7 +35,6 @@ public class Code extends CommonFunc {
     }
     @Then("^User should see Login failed\\. Please try again$")
     public void userShouldSeeLoginFailedPleaseTryAgain()  {
-
         pm.getMainPage();
     }
     @Then("^User should see The email field is required\\.$")
@@ -91,8 +90,6 @@ public class Code extends CommonFunc {
     }
     @Then("^User should see Sign in to start your session page$")
     public void userShouldSeeSignInToStartYourSessionPage() {
-    pm.getstartSessionPg();
-    }
-
+    pm.getstartSessionPg();}
 }
 
