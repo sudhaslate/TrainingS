@@ -1,9 +1,11 @@
-package fbsteps;
+package stepsfb3;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
-@CucumberOptions(features = ".",dryRun = false, plugin = {"pretty","html:cucumber-reports"})
+@CucumberOptions(features = ".",plugin ={"pretty","html:cucumber-reports"})
 
-public class RunFB {
+
+
+public class Runfb3 {
 }

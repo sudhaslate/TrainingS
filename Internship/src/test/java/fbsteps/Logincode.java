@@ -9,17 +9,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-public class Logincode {
-    public WebDriver driver;
+
+public class Logincode extends Utilities {
+
     @Given("^User is on the Facebook Page$")
     public void user_is_on_the_Facebook_Page() {
-        ChromeOptions options=new ChromeOptions();
-        options.addArguments("--disable-notifications");
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(options);
-        driver.get("https://en-gb.facebook.com/");
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath("//*[@id=\"facebook\"]/body/div[3]/div[2]/div/div/div/div/div[3]")).click();
     }
     @When("^User enter\"([^\"]*)\" as EmailId$")
     public void user_enter_as_EmailId(String EmailId) {
@@ -70,14 +64,14 @@ public class Logincode {
         driver.findElement(By.xpath("//a[contains(text(),'Forgotten password?')]")).click();
     }
     @When("^User enters\"([^\"]*)\" in the input box$")
-    public void user_enters_in_the_input_box(String EmailId)  {
+    public void user_enters_in_the_input_box(String EmailId) throws InterruptedException {
         driver.findElement(By.xpath("//input[@id='identify_email']")).sendKeys(EmailId);
+        Thread.sleep(3000);
     }
-
     @When("^Click on the search button$")
-    public void click_on_the_search_button() throws InterruptedException {
+    public void click_on_the_search_button()  {
         driver.findElement(By.cssSelector("#did_submit")).click();
-        Thread.sleep(5000);
+
     }
     @Then("^User should see Reset Your Password$")
     public void user_should_see_Reset_Your_Password()  {
@@ -86,6 +80,5 @@ public class Logincode {
         String actualResult=driver.findElement(By.xpath("//h2[@class='uiHeaderTitle']")).getText();
         String expectedResult="Reset Your Password";
         Assert.assertEquals(actualResult,expectedResult);
-        driver.close();
     }
 }

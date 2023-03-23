@@ -8,6 +8,8 @@ public class Hooks extends CommonFunc {
         openBrowser();
     }
 
+
+
     @After
     public void afterMethod() {
         closeBrowser();

@@ -1,11 +1,10 @@
 package steps;
-
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
-
 @RunWith(Cucumber.class)
+@CucumberOptions(features = ".",dryRun = false,monochrome = true,plugin = {"pretty","html:cucumber-reports"})
 
-@CucumberOptions(features = ".",plugin = {"pretty","html:cucumber-reports"},dryRun = false,tags="@RegressionTest")
-public class Run {
+public class Runnee {
+
 }
